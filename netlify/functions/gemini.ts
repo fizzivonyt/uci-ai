@@ -6,7 +6,7 @@ export default async (req: Request) => {
     const key = process.env.GEMINI_API_KEY;
     if (!key) return new Response(JSON.stringify({success:false,error:"GEMINI_API_KEY nije podešen na serveru"}), {status:500});
     const prompt = body.messages.map((m:any)=>`${m.role}: ${m.text}`).join("\n");
-    const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key="+encodeURIComponent(key), {
+    const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-3.7-flash:generateContent?key="+encodeURIComponent(key), {
       method:"POST", headers:{"Content-Type":"application/json"},
       body: JSON.stringify({contents:[{parts:[{text:"Odgovaraj na srpskom latinicom. Pomaži učeniku da razume gradivo, ne samo da dobije odgovor.\\n"+prompt}]}]})
     });
