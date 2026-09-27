@@ -37,7 +37,7 @@ function App(){
    try{
      let result:any;
      if(apiKey){
-       const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${encodeURIComponent(apiKey)}`,{
+       const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.7-flash:generateContent?key=${encodeURIComponent(apiKey)}`,{
          method:"POST",headers:{"Content-Type":"application/json"},
          body:JSON.stringify({contents:[{parts:[{text:"Odgovaraj na srpskom latinicom. Ti si školski AI asistent. Objasni učeniku jasno i korak po korak.\\n"+next.map(m=>m.role+": "+m.text).join("\\n")}]}]})
        }); result=await r.json();
